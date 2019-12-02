@@ -27,9 +27,12 @@ public class View {
         final JTextField tf=new JTextField();
         tf.setBounds(120,10, 200,20);
 
-
+        //text area
         area = new JTextArea();
-        area.setBounds(40,35,450,400);
+        area.setBounds(15,35,520,600);
+        area.setFont(new Font("Arial", Font.PLAIN, 12));
+        area.setLineWrap(true);
+        area.setWrapStyleWord(true);
 
         //button-search
         JButton b=new JButton("Fetch show info");
@@ -37,10 +40,10 @@ public class View {
 
         //button-save to text
         JButton saveToTextBtn = new JButton("Save to text");
-        saveToTextBtn.setBounds(40,450,200,20);
+        saveToTextBtn.setBounds(40,640,200,20);
 
         JButton saveToJSONBtn = new JButton("Save to JSON");
-        saveToJSONBtn.setBounds(280,450,200,20);
+        saveToJSONBtn.setBounds(450,640,200,20);
 
         //label
         JLabel label = new JLabel("Enter a TV Show");
@@ -67,9 +70,10 @@ public class View {
                    String summary = (String) jObj.get("summary");
                    summary = summary.replace(".","."+ "\n").replaceAll("\\<.*?>","");// removes html tags
 
+                   String info = "Show Name: " + showName + "\n"+
+                           "\n Language: " + language + "\n" +
+                           "\nDescription: " + "\n" + summary;
 
-                   String info = "Show Name: " + showName +
-                           "\n Language: " + language;
                    area.append(info);
 
 
@@ -93,7 +97,7 @@ public class View {
 
         f.add(label);
         f.add(tf);
-        f.setSize(550,550);
+        f.setSize(600,750);
         f.setLayout(null);
         f.setVisible(true);
     }
