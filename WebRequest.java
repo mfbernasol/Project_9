@@ -5,7 +5,7 @@ import org.json.simple.*;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-
+/* To test API request and parse infomation */
 public class WebRequest {
 
 
