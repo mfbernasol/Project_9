@@ -1,3 +1,5 @@
+package Project_9;
+
 import org.json.simple.*;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -23,7 +25,7 @@ public class View {
 
 
         //Textfield
-        JFrame f =new JFrame("Button Example");
+        JFrame f =new JFrame("TV Show Database");
         final JTextField tf=new JTextField();
         tf.setBounds(120,10, 200,20);
 
@@ -43,7 +45,7 @@ public class View {
         saveToTextBtn.setBounds(40,640,200,20);
 
         JButton saveToJSONBtn = new JButton("Save to JSON");
-        saveToJSONBtn.setBounds(450,640,200,20);
+        saveToJSONBtn.setBounds(350,640,200,20);
 
         //label
         JLabel label = new JLabel("Enter a TV Show");
