@@ -1,27 +1,20 @@
-
 import org.json.simple.*;
 import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.io.*;
 import java.net.*;
 import java.util.*;
 
 public class View {
 
-    public static void parseJSON(String url){
-
-    }
-
 
     public static void main(String[] args) {
-
+        //initialize text area
         JTextArea area;
-
 
         //Textfield
         JFrame f =new JFrame("TV Show Database");
@@ -51,7 +44,7 @@ public class View {
         label.setBounds(10,5, 100,30);
 
 
-
+        //retrieves and parses data from api when button pressed
         b.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
 
@@ -64,17 +57,25 @@ public class View {
                    BufferedReader reader = new BufferedReader(new InputStreamReader(url.openStream()));
 
                    JSONObject jObj = (JSONObject)parser.parse(reader);
+
                    String showName  = (String) jObj.get("name");
 
+                   ArrayList<String> genres = (JSONArray)jObj.get("genres");
+
                    String language = (String) jObj.get("language");
+
+                   String status = (String) jObj.get("status");
 
                    String summary = (String) jObj.get("summary");
                    summary = summary.replace(".","."+ "\n").replaceAll("\\<.*?>","");// removes html tags
 
                    String info = "Show Name: " + showName + "\n"+
-                           "\n Language: " + language + "\n" +
-                           "\nDescription: " + "\n" + summary;
+                                "Genres: " + genres + "\n" +
+                                "\nStatus: " + status + "\n" +
+                                "\n Language: " + language + "\n" +
+                                "\nDescription: " + "\n" + summary;
 
+                   //shows info to JtextArea
                    area.append(info);
 
 
@@ -89,15 +90,20 @@ public class View {
         });
 
 
-
+        //adds text area
         f.add(area);
 
+        //adds textfield
         f.add(b);
+
+        //adds buttons
         f.add(saveToTextBtn);
         f.add(saveToJSONBtn);
 
         f.add(label);
         f.add(tf);
+
+        //width and height for Frame
         f.setSize(600,750);
         f.setLayout(null);
         f.setVisible(true);
