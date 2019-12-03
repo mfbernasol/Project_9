@@ -60,7 +60,7 @@ public class View {
 
                    String showName  = (String) jObj.get("name");
 
-                   ArrayList<String> genres = (JSONArray)jObj.get("genres");
+                 //  ArrayList<String> genres = (JSONArray)jObj.get("genres");
 
                    String language = (String) jObj.get("language");
 
@@ -69,15 +69,21 @@ public class View {
                    String summary = (String) jObj.get("summary");
                    summary = summary.replace(".","."+ "\n").replaceAll("\\<.*?>","");// removes html tags
 
-                   String info = "Show Name: " + showName + "\n"+
+                  /* String info = "Show Name: " + showName + "\n"+
                                 "Genres: " + genres + "\n" +
                                 "\nStatus: " + status + "\n" +
                                 "\n Language: " + language + "\n" +
                                 "\nDescription: " + "\n" + summary;
-
+*/
                    //shows info to JtextArea
-                   area.append(info);
-
+                   
+                  
+           
+                   TvShow tvShow = new TvShow(showName, language, summary);
+                   area.append(tvShow.toString());
+                   
+                   
+                   
 
                    reader.close();
                }catch(Exception ex){
