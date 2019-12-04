@@ -13,6 +13,7 @@ public class View {
 
 
     public static void main(String[] args) {
+    	 ArrayList<TvShow> show = new ArrayList<TvShow>();
         //initialize text area
         JTextArea area;
 
@@ -79,11 +80,12 @@ public class View {
                    
                   
            
-                   TvShow tvShow = new TvShow(showName, language, summary);
-                   area.append(tvShow.toString());
+                 //  TvShow tvShow = new TvShow(showName, language, summary);
+                  // area.append(tvShow.toString());
                    
-                   
-                   
+                 //  ArrayList<TvShow> show = new ArrayList<TvShow>();
+                   show.add(new TvShow(showName, language, summary));
+                   area.setText(DisplayShows.printShowsToScreen(show));
 
                    reader.close();
                }catch(Exception ex){
