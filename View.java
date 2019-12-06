@@ -35,6 +35,35 @@ public class View {
         JButton b=new JButton("Fetch show info");
         b.setBounds(330,10,145,20);
 
+        //menu bar
+        JMenuBar mbar = new JMenuBar();
+        JMenu mnuFile = new JMenu("File");
+        JMenu mnuHelp = new JMenu("Help");
+        JMenuItem miExit = new JMenuItem("Exit");
+        JMenuItem miAbout = new JMenuItem("About");
+        miExit.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		System.exit(0);
+        	}
+        });
+        mnuFile.add(miExit);
+        mbar.add(mnuFile);
+        f.setJMenuBar(mbar);
+        
+        miAbout.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		JOptionPane.showMessageDialog(null, "Enter in a popular tv show you want to learn about! Click on Fetch Show Info button to "
+        				+ "fetch the tv show \ninformation. Then click on one of the save buttons to be able to save in either Text or JSON file. "
+        				+ "Happy \nfetching!");
+        	}
+        });;
+        mnuHelp.add(miAbout);
+        mbar.add(mnuHelp);
+        f.setJMenuBar(mbar);
+        
+        
+        
+        
         //button-save to text
         JButton saveToTextBtn = new JButton("Save to text");
         saveToTextBtn.setBounds(40,640,200,20);
