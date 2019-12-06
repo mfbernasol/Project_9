@@ -6,7 +6,7 @@ public class TvShow {
     private String language;
     private String status;
     private String summary;
-    private ArrayList<String> genre;
+  
 
     public void setName(String name) {
         this.name = name;
@@ -35,27 +35,23 @@ public class TvShow {
         return status;
     }
 
-    public ArrayList<String> getGenre() {
-    	return genre;
-    }
     public String getSummary() {
         return summary;
     }
 
-    public TvShow (String name, String language, ArrayList<String> genre, String status, String summary) {
+    public TvShow (String name, String language, String status, String summary) {
         this.name = name;
         this.language = language;
         this.status = status;
-        this.genre = genre;
         this.summary = summary;
     }
 
 @Override
     public String toString() {
-        genre.toString().replace("[]","").replace( ""," ");
+        //genre.toString().replace("[]","").replace( ""," ");
         String description =
                 "Name: " + name + "\n" +
-                "\nLanguage: " + language + "\n" + "\n Genre: " + genre +
+                "\nLanguage: " + language + "\n" + "\n Genre: " +
                 "\nStatus: " + status + "\n" +
                 "\nSummary: " + summary + "\n";
 

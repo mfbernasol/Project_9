@@ -43,7 +43,7 @@ public class View {
 				try {
 					JFileChooser jfc = new JFileChooser(new File("c:\\desktop"));
 					if (jfc.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
-						if(ButtonFileSave.write(jfc.getSelectedFile(), show)) {
+						if(ButtonFileSave.writeToText(jfc.getSelectedFile(), show)) {
 							JOptionPane.showMessageDialog(null, "Tv Shows Saved!");
 						} else {
 							JOptionPane.showMessageDialog(null, "Tv Shows could not be saved.");
@@ -54,9 +54,25 @@ public class View {
 				}
 			}
         });
-
+        //save to json button
         JButton saveToJSONBtn = new JButton("Save to JSON");
         saveToJSONBtn.setBounds(350,640,200,20);
+        saveToJSONBtn.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+				try {
+					JFileChooser jfc = new JFileChooser(new File("c:\\desktop"));
+					if (jfc.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
+						if(ButtonFileSave.writeToJson(jfc.getSelectedFile(), show)) {
+							JOptionPane.showMessageDialog(null, "Tv Shows Saved!");
+						} else {
+							JOptionPane.showMessageDialog(null, "Tv Shows could not be saved.");
+						}
+					}
+				} catch(Exception ex) {
+					System.out.println("Could not save the file");
+				}
+			}
+        });
 
         //label
         JLabel label = new JLabel("Enter a TV Show");
@@ -79,8 +95,6 @@ public class View {
 
                    String showName  = (String) jObj.get("name");
 
-                 //  ArrayList<String> genres = (JSONArray)jObj.get("genres");
-
                    String language = (String) jObj.get("language");
 
                    String status = (String) jObj.get("status");
@@ -102,9 +116,8 @@ public class View {
                   // area.append(tvShow.toString());
                    
                  //  ArrayList<TvShow> show = new ArrayList<TvShow>();
-                   ArrayList<String> good = new ArrayList<String>();
-                   good.add("good");
-                   show.add(new TvShow(showName, language, good, status, summary));
+                
+                   show.add(new TvShow(showName, language, status, summary));
                    area.setText(DisplayShows.printShowsToScreen(show));
 
                    reader.close();
