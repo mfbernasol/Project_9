@@ -5,7 +5,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.*;
 import java.util.*;
 
@@ -36,6 +38,22 @@ public class View {
         //button-save to text
         JButton saveToTextBtn = new JButton("Save to text");
         saveToTextBtn.setBounds(40,640,200,20);
+        saveToTextBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					JFileChooser jfc = new JFileChooser(new File("c:\\desktop"));
+					if (jfc.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
+						if(ButtonFileSave.write(jfc.getSelectedFile(), show)) {
+							JOptionPane.showMessageDialog(null, "Tv Shows Saved!");
+						} else {
+							JOptionPane.showMessageDialog(null, "Tv Shows could not be saved.");
+						}
+					}
+				} catch(Exception ex) {
+					System.out.println("Could not save the file");
+				}
+			}
+        });
 
         JButton saveToJSONBtn = new JButton("Save to JSON");
         saveToJSONBtn.setBounds(350,640,200,20);
@@ -84,7 +102,9 @@ public class View {
                   // area.append(tvShow.toString());
                    
                  //  ArrayList<TvShow> show = new ArrayList<TvShow>();
-                   show.add(new TvShow(showName, language, summary));
+                   ArrayList<String> good = new ArrayList<String>();
+                   good.add("good");
+                   show.add(new TvShow(showName, language, good, status, summary));
                    area.setText(DisplayShows.printShowsToScreen(show));
 
                    reader.close();
