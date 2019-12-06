@@ -1,10 +1,18 @@
+import org.json.simple.*;
+import org.json.simple.parser.JSONParser;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.*;
+import java.security.cert.CertPathValidatorException;
+import java.util.*;
 import java.util.ArrayList;
 
 import javax.swing.JTextArea;
 
+//controller
 public class DisplayShows {
-    
-        public static ArrayList<TvShow> requestShowData(String show) {
+
+    public static ArrayList<TvShow> requestShowData(String show) {
         ArrayList<TvShow> shows = new ArrayList<>();
         String urlString = "http://api.tvmaze.com/singlesearch/shows?q= " + show;
         JSONParser parser = new JSONParser();
@@ -38,15 +46,15 @@ public class DisplayShows {
     }
 
 
-    
-    
+
     public static String printShowsToScreen(ArrayList<TvShow> tvShows){
         String text = "";
-    	for(TvShow t: tvShows){
+        for(TvShow t: tvShows){
             text += t + "\n";
         }
-    	return text;
-    	
+        return text;
+
+
     }
 
 }
