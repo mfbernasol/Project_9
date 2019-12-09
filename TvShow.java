@@ -6,7 +6,8 @@ public class TvShow {
     private String language;
     private String status;
     private String summary;
-  
+    private ArrayList<String> genres;
+
 
     public void setName(String name) {
         this.name = name;
@@ -22,6 +23,9 @@ public class TvShow {
 
     public void setSummary(String summary) {
         this.summary = summary;
+    }
+    public void setGenres(ArrayList<String> genres) {
+        this.genres = genres;
     }
 
     public String getName() {
@@ -39,21 +43,26 @@ public class TvShow {
         return summary;
     }
 
-    public TvShow (String name, String language, String status, String summary) {
+    public ArrayList<String> getGenres(){
+        return genres;
+    }
+
+    public TvShow (String name, String language,ArrayList<String> genres, String status, String summary) {
         this.name = name;
         this.language = language;
+        this.genres = genres;
         this.status = status;
         this.summary = summary;
     }
 
-@Override
+    @Override
     public String toString() {
-        //genre.toString().replace("[]","").replace( ""," ");
+
         String description =
                 "Name: " + name + "\n" +
-                "\nLanguage: " + language + "\n" + "\n Genre: " +
-                "\nStatus: " + status + "\n" +
-                "\nSummary: " + summary + "\n";
+                        "\nLanguage: " + language + "\n" + "\n Genre: " + genres +
+                        "\nStatus: " + status + "\n" +
+                        "\nSummary: " + summary + "\n";
 
         return description;
     }
