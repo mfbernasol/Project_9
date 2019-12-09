@@ -25,7 +25,8 @@ public class DisplayShows {
 
             String showName = (String) jObj.get("name");
 
-            //  ArrayList<String> genres = (JSONArray)jObj.get("genres");
+            ArrayList<String> genres = (JSONArray)jObj.get("genres");
+            
 
             String language = (String) jObj.get("language");
 
@@ -33,7 +34,7 @@ public class DisplayShows {
 
             String summary = (String) jObj.get("summary");
             summary = summary.replace(".", "." + "\n").replaceAll("\\<.*?>", "");// removes html tags
-            shows.add(new TvShow(showName, language, status, summary));
+            shows.add(new TvShow(showName, language,genres, status, summary));
 
 
             reader.close();
