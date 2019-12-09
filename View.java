@@ -1,4 +1,3 @@
-
 import org.json.simple.*;
 import org.json.simple.parser.JSONParser;
 
@@ -16,7 +15,6 @@ public class View {
 
 
     public static void main(String[] args) {
-        ArrayList<TvShow> show = new ArrayList<TvShow>();
         //initialize text area
         JTextArea area;
 
@@ -28,7 +26,7 @@ public class View {
         //text area
         area = new JTextArea();
         area.setBounds(15,35,520,600);
-        area.setFont(new Font("Arial", Font.PLAIN, 12));
+        area.setFont(new Font("Arial", Font.PLAIN, 16));
         area.setLineWrap(true);
         area.setWrapStyleWord(true);
 
@@ -63,6 +61,20 @@ public class View {
         f.setJMenuBar(mbar);
 
 
+        //label
+        JLabel label = new JLabel("Enter a TV Show");
+        label.setBounds(10,5, 100,30);
+
+        final ArrayList<TvShow>[] show = new ArrayList[]{new ArrayList<>()};
+        //retrieves and parses data from api when button pressed
+        b.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                String str1 = tf.getText();
+                show[0] = DisplayShows.requestShowData(str1);
+                area.append(DisplayShows.printShowsToScreen(show[0]));
+
+            }
+        });
 
 
         //button-save to text
@@ -73,7 +85,7 @@ public class View {
                 try {
                     JFileChooser jfc = new JFileChooser(new File("c:\\desktop"));
                     if (jfc.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
-                        if(ButtonFileSave.writeToText(jfc.getSelectedFile(), show)) {
+                        if(ButtonFileSave.writeToText(jfc.getSelectedFile(), show[0])) {
                             JOptionPane.showMessageDialog(null, "Tv Shows Saved!");
                         } else {
                             JOptionPane.showMessageDialog(null, "Tv Shows could not be saved.");
@@ -92,7 +104,7 @@ public class View {
                 try {
                     JFileChooser jfc = new JFileChooser(new File("c:\\desktop"));
                     if (jfc.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
-                        if(ButtonFileSave.writeToJson(jfc.getSelectedFile(), show)) {
+                        if(ButtonFileSave.writeToJson(jfc.getSelectedFile(), show[0])) {
                             JOptionPane.showMessageDialog(null, "Tv Shows Saved!");
                         } else {
                             JOptionPane.showMessageDialog(null, "Tv Shows could not be saved.");
@@ -101,21 +113,6 @@ public class View {
                 } catch(Exception ex) {
                     System.out.println("Could not save the file");
                 }
-            }
-        });
-
-        //label
-        JLabel label = new JLabel("Enter a TV Show");
-        label.setBounds(10,5, 100,30);
-
-
-        //retrieves and parses data from api when button pressed
-        b.addActionListener(new ActionListener(){
-            public void actionPerformed(ActionEvent e){
-                String str1 = tf.getText();
-                ArrayList<TvShow> data = DisplayShows.requestShowData(str1);
-                area.append(DisplayShows.printShowsToScreen(data));
-
             }
         });
 
