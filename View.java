@@ -25,7 +25,7 @@ public class View {
 
         //text area
         area = new JTextArea();
-        area.setBounds(15,35,520,600);
+        area.setBounds(15,35,600,600);
         area.setFont(new Font("Arial", Font.PLAIN, 16));
         area.setLineWrap(true);
         area.setWrapStyleWord(true);
@@ -33,6 +33,9 @@ public class View {
         //button-search
         JButton b=new JButton("Fetch show info");
         b.setBounds(330,10,145,20);
+
+
+
 
         //menu bar
         JMenuBar mbar = new JMenuBar();
@@ -65,6 +68,9 @@ public class View {
         JLabel label = new JLabel("Enter a TV Show");
         label.setBounds(10,5, 100,30);
 
+
+
+
         final ArrayList<TvShow>[] show = new ArrayList[]{new ArrayList<>()};
         //retrieves and parses data from api when button pressed
         b.addActionListener(new ActionListener(){
@@ -76,6 +82,19 @@ public class View {
             }
         });
 
+
+        //button to enter clear search
+        JButton clearSearch = new JButton("Start a new search");
+        clearSearch.setBounds(480,10,145,20);
+        clearSearch.setFont(new Font("Dialog",Font.BOLD,12));
+        clearSearch.setHorizontalAlignment(SwingConstants.LEFT);
+
+        clearSearch.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                tf.setText("");
+                area.setText("");
+            }
+        });
 
         //button-save to text
         JButton saveToTextBtn = new JButton("Save to text");
@@ -122,7 +141,7 @@ public class View {
 
         //adds textfield
         f.add(b);
-
+        f.add(clearSearch);
         //adds buttons
         f.add(saveToTextBtn);
         f.add(saveToJSONBtn);
@@ -131,7 +150,7 @@ public class View {
         f.add(tf);
 
         //width and height for Frame
-        f.setSize(600,750);
+        f.setSize(650,750);
         f.setLayout(null);
         f.setVisible(true);
     }
