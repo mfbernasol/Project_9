@@ -1,3 +1,12 @@
+/**
+ * This class serves as the object
+ * class for the a Tv Show. A TvShow
+ * has a name, language, status, and 
+ * summary. It includes the constructor 
+ * and the toString function.
+ * @author Rajashree Kodithyala, Matt Espinos, Michael Bernasol
+ */
+
 import java.util.ArrayList;
 
 public class TvShow {

@@ -1,3 +1,12 @@
+/**
+ * This is the driver class. In 
+ * this class we initialize the JSON
+ * text area and create a text field 
+ * from the API that is in JSON. This 
+ * is where the UI including the buttons 
+ * and menu bar are created.
+ * @author Rajashree Kodithyala, Matt Espinos, Michael Bernasol
+ */ 
 import org.json.simple.*;
 import org.json.simple.parser.JSONParser;
 

@@ -1,3 +1,10 @@
+/**
+ * This class displays the shows
+ * to the screen. This is where we
+ * get the specific information from 
+ * the API and print it to the screen.
+ * @author Rajashree Kodithyala, Matt Espinos, Michael Bernasol
+ */
 import org.json.simple.*;
 import org.json.simple.parser.JSONParser;
 import java.io.BufferedReader;

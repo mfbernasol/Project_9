@@ -1,3 +1,9 @@
+/**
+ * This class writes to the text 
+ * and JSON file using the array
+ * list of the tv shows.
+ * @author Rajashree Kodithyala, Matt Espinos, Michael Bernasol
+ */
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
